@@ -13,8 +13,10 @@ NewData<-select(FiltData, Total, Taxon, Scenario, Nutrients)
 NewData$Total<-NewData$Total/1000
 NewData<-rename(NewData, TotalG = Total)
 
-# 5. Replace each string with its first letter
-NewData$Nutrients<-gsub("(\\w)\\w+", "\\1", NewData$Nutrients)
+# 5. If there is a column called "Nutrients", replace each string with its first letter
+if("Nutrients" %in% colnames(NewData)) {
+  NewData$Nutrients<-gsub("(\\w)\\w+", "\\1", NewData$Nutrients)
+}
 
 # 6. Replace all the '.' with ',' in the 'TotalG' column
 NewData$TotalG<-gsub("\\.", ",", NewData$TotalG)
