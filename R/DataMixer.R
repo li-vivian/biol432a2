@@ -20,5 +20,3 @@ if("Nutrients" %in% colnames(NewData)) {
 
 # 6. Replace all the '.' with ',' in the 'TotalG' column
 NewData$TotalG<-gsub("\\.", ",", NewData$TotalG)
-
-head(NewData)
